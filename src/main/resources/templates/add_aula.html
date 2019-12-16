@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Adicionar Aula</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+<div class="container my-5">
+    <h2 class="mb-5">Nova Aula</h2>
+
+    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red"/>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/addaula}" th:object="${aula}" method="post">
+                <div class="form-group">
+                    <label for="data" class="col-form-label">Data de Realização</label>
+                    <input autofocus type="date" th:field="*{data}" class="form-control" id="data" placeholder="Data de Realização"/>
+                    <span th:if="${#fields.hasErrors('data')}" th:errors="*{data}" class="text-danger"></span>
+                    </br>
+                </div>
+
+                <div class="form-group">
+                    <label for="professor" class="col-form-label">Professor</label>
+                    <br />
+                    <select th:field="*{professor}" id="professor" class="form-control">
+                        <option th:each="professor : ${listaProfessores}"
+                                th:value="${{professor.id}}"
+                                th:text="${professor.nome}">
+                        </option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('professor')}" th:errors="*{professor}" class="text-danger"></span>
+                    </br>
+                </div>
+
+                <div class="form-group">
+                    <label for="materia" class="col-form-label">Matéria</label>
+                    <select th:field="*{materia}" id="materia" class="form-control">
+                        <option th:each="materia : ${listaMaterias}"
+                                th:value="${{materia.id}}"
+                                th:text="${materia.descricao}">
+                        </option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('materia')}" th:errors="*{materia}" class="text-danger"></span>
+                    </br>
+                </div>
+
+                <div class="form-group">
+                    <label for="turma" class="col-form-label">Turma</label>
+                    <select th:field="*{turma}" id="turma" class="form-control">
+                        <option th:each="turma : ${listaTurmas}"
+                                th:value="${{turma.id}}"
+                                th:text="${turma.descricao}">
+                        </option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('turma')}" th:errors="*{turma}" class="text-danger"></span>
+                    </br>
+                </div>
+
+                <div class="form-group">
+                    <label for="atividade" class="col-form-label">Atividade</label>
+                    <select th:field="*{atividade}" id="atividade" class="form-control">
+                        <option th:each="atividade : ${listaAtividades}"
+                                th:value="${{atividade.id}}"
+                                th:text="${atividade.descricao}">
+                        </option>
+                    </select>
+                    <span th:if="${#fields.hasErrors('atividade')}" th:errors="*{atividade}" class="text-danger"></span>
+                    </br>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-primary" value="Adicionar Aula">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

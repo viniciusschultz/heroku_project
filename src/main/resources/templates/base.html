@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head th:fragment="common_header(title)">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+
+        <title th:replace="${title}">AtivaDI</title>
+    </head>
+
+    <body>
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+
+                    <div class="masthead clearfix" th:fragment="header_fragment(title)">
+                        <div class="inner">
+                            <nav class="navbar navbar-light bg-light">
+                                <ul class="nav masthead-nav">
+                                    <li class="nav-item"><a class="nav-link" href="/">AtivaDI</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/assunto">Assunto</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/atividade">Atividade</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/materia">Matéria</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/aula">Aula</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div th:fragment="footer_fragment">
+                        <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+                            <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                                <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+                            </div>
+                        </footer>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/jquery.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+    </body>
+</html>

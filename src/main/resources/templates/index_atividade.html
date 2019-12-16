@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head>
+        <head th:replace="base :: common_header(~{::title})">
+            <title>Atividade</title>
+        </head>
+    </head>
+
+    <body class="text-center">
+
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div th:insert="~{base :: header_fragment(~{::h3})}">
+                        <h3>Atividade</h3>
+                    </div>
+
+                        <div th:if="${sucessMessage}" th:text="${sucessMessage}" style="color:green"/>
+                        <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red"/>
+
+                        <div th:switch="${atividades}" class="container my-5">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h2 th:case="null">Sem registros!</h2>
+                                    <div th:case="*">
+                                        <h2 class="d-flex flex-row">Atividades</h2>
+                                        <a href="/newatividade" class="btn btn-primary d-flex flex-row-reverse"><em class="fas fa-user-plus ml-2"></em></a>
+                                        <p></p>
+                                        <table class="table table-striped" style="width:100%;">
+                                            <caption>Atividades cadastradas</caption>
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Código</th>
+                                                <th scope="col">Descrição</th>
+                                                <th scope="col">Grau</th>
+                                                <th scope="col">URL</th>
+                                                <th scope="col">Alterar</th>
+                                                <th scope="col">Remover</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="atividade : ${atividades}">
+                                                <td th:text="${atividade.id}"></td>
+                                                <td th:text="${atividade.descricao}" style="width:80%;"></td>
+                                                <td>
+                                                    <span th:if="${atividade.grau == 1}">Pré-Escolar</span>
+                                                    <span th:unless="${atividade.grau == 1}">Escolar</span>
+                                                </td>
+                                                <td th:text="${atividade.urlExterna}"></td>
+                                                <td><a th:href="@{/editatividade/{id}(id=${atividade.id})}" class="btn btn-primary"><em class="fas fa-user-edit ml-2"></em></a></td>
+                                                <td><a th:href="@{/deleteatividade/{id}(id=${atividade.id})}" class="btn btn-primary"><em class="fas fa-user-times ml-2"></em></a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div th:insert="~{base :: footer_fragment}"/>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/jquery.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+    </body>
+</html>
