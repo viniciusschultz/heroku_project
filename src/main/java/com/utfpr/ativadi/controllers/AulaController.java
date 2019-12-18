@@ -115,7 +115,7 @@ public class AulaController {
         AulaConcrete aula = aulaRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Id da Matéria inválido:" + id));
 
         AulaConcrete clone = (AulaConcrete) aula.clone();
-        clone.setId(0);
+        clone.setId(aulaRepository.getNewID());
         aulaRepository.save(clone);
 
         model.addAttribute(TODAS_ATIVIDADES, aulaRepository.findAll());
