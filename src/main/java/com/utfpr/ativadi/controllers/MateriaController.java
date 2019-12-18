@@ -48,6 +48,7 @@ public class MateriaController {
             return "add_materia";
         }
 
+        materia.setId(materiaRepository.getNewID());
         materiaRepository.save(materia);
         model.addAttribute(TODAS_MATERIAS, materiaRepository.findAll());
         model.addAttribute(SUCESS, Mensagem.getInstance(true, Mensagem.Funcao.ADICIONAR).show());

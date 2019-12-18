@@ -14,8 +14,6 @@ import javax.validation.constraints.NotNull;
 public class Atividade implements AtividadeFlyweight{
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
 
     @NotBlank(message = "A Descrição é um campo obrigatório")

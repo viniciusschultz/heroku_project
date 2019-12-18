@@ -68,6 +68,7 @@ public class AulaController {
             return "add_aula";
         }
 
+        aula.setId(aulaRepository.getNewID());
         aulaRepository.save(aula);
         model.addAttribute(TODAS_ATIVIDADES, aulaRepository.findAll());
         model.addAttribute(SUCESS, Mensagem.getInstance(true, Mensagem.Funcao.ADICIONAR).show());

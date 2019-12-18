@@ -44,6 +44,7 @@ public class AssuntoController {
             return "add_assunto";
         }
 
+        assunto.setId(assuntoRepository.getNewID());
         assuntoRepository.save(assunto);
         model.addAttribute(TODOS_ASSUNTOS, assuntoRepository.findAll());
         model.addAttribute(SUCESS, Mensagem.getInstance(true, Mensagem.Funcao.ADICIONAR).show());

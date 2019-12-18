@@ -15,8 +15,6 @@ import java.util.stream.Collectors;
 public class Materia implements ComponenteMateria, Serializable {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     protected long id;
 
     @NotBlank(message = "A Descrição é um campo obrigatório")

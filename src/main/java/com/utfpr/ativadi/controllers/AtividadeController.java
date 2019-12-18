@@ -22,7 +22,6 @@ public class AtividadeController {
     private final String SUCESS = "sucessMessage";
     private final String INICIO = "index_atividade";
     private final String TODAS_ATIVIDADES = "atividades";
-    Logger logger = LoggerFactory.getLogger(Atividade.class);
 
     @Autowired
     public AtividadeController(AtividadeRepository atividadeRepository) {
@@ -45,8 +44,6 @@ public class AtividadeController {
         AtividadeFactory.loadCache(atividadeRepository.findAll());
         atividade = (Atividade) AtividadeFactory.getAtividade(atividade);
 
-        logger.info(atividade.toString());
-
         if (result.hasErrors()) {
             model.addAttribute(ERROR, Mensagem.getInstance(false, Mensagem.Funcao.ADICIONAR).show());
             return "add_atividade";
@@ -54,8 +51,10 @@ public class AtividadeController {
 
         if (atividade.getId() > 0)
             model.addAttribute(SUCESS, "Atividade compartilhada com Sucesso!");
-        else
+        else {
             model.addAttribute(SUCESS, Mensagem.getInstance(true, Mensagem.Funcao.ADICIONAR).show());
+            atividade.setId(atividadeRepository.getNewID());
+        }
 
         atividadeRepository.save(atividade);
         model.addAttribute(TODAS_ATIVIDADES, atividadeRepository.findAll());

@@ -16,4 +16,7 @@ public interface AtividadeRepository extends CrudRepository<Atividade, Long> {
 
     @Query(value = "SELECT * FROM ativadi.atividade a WHERE a.id = :id", nativeQuery = true)
     public Optional<Atividade> findById(@Param("id") Long id);
+
+    @Query(value = "SELECT MAX(id) + 1 FROM ativadi.atividade", nativeQuery = true)
+    public long getNewID();
 }

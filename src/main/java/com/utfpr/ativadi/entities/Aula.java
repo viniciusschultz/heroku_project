@@ -12,8 +12,6 @@ import java.util.Objects;
 public abstract class Aula implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     private long id;
 
     @NotNull(message = "A Data de Realização é um campo obrigatório")

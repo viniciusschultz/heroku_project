@@ -10,8 +10,6 @@ import java.util.List;
 public class Assunto implements ComponenteMateria{
 
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name = "increment", strategy = "increment")
     protected long id;
 
     @NotBlank(message = "A Descrição é um campo obrigatório")
