@@ -22,7 +22,7 @@ public class Materia implements ComponenteMateria, Serializable {
     protected String descricao;
 
     @ManyToMany(cascade = CascadeType.DETACH)
-    @JoinTable(name = "materia_assunto",
+    @JoinTable(name = "materia_assunto", schema = "ativadi",
             joinColumns = @JoinColumn(name = "id_materia", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "id_assunto", referencedColumnName = "id", table = "assunto"))
     protected List<Assunto> assuntos;

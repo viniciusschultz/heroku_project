@@ -2,10 +2,7 @@ package com.utfpr.ativadi.entities;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +19,7 @@ public class Atividade implements AtividadeFlyweight{
     @NotNull(message = "O Grau Escolar é um campo obrigatório")
     private int grau;
 
+    @Column(name = "urlExterna")
     private String urlExterna;
 
     public Atividade(){}
