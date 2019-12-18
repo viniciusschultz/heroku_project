@@ -14,13 +14,14 @@ SET time_zone = "+00:00";
 -- Banco de dados: `ativadi`
 --
 
-drop table if exists assunto;
+drop table if exists materia_assunto;
+drop table if exists aula;
 drop table if exists atividade;
 drop table if exists materia;
-drop table if exists materia_assunto;
+drop table if exists assunto;
 drop table if exists professor;
 drop table if exists turma;
-drop table if exists aula;
+
 
 -- --------------------------------------------------------
 --
@@ -28,7 +29,7 @@ drop table if exists aula;
 --
 
 CREATE TABLE `assunto` (
-  `id` bigint(20) NOT NULL,
+  `id` integer NOT NULL,
   `descricao` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -47,9 +48,9 @@ INSERT INTO `assunto` (`id`, `descricao`) VALUES
 --
 
 CREATE TABLE `atividade` (
-  `id` bigint(20) NOT NULL,
+  `id` integer NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `grau` int(11) NOT NULL,
+  `grau` integer NOT NULL,
   `url_externa` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,12 +69,12 @@ INSERT INTO `atividade` (`id`, `descricao`, `grau`, `url_externa`) VALUES
 --
 
 CREATE TABLE `aula` (
-  `id` bigint(20) NOT NULL,
+  `id` integer NOT NULL,
   `data` datetime NOT NULL,
-  `id_atividade` bigint(20) NOT NULL,
-  `id_materia` bigint(20) NOT NULL,
-  `id_professor` bigint(20) NOT NULL,
-  `id_turma` bigint(20) NOT NULL
+  `id_atividade` integer NOT NULL,
+  `id_materia` integer NOT NULL,
+  `id_professor` integer NOT NULL,
+  `id_turma` integer NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,10 +83,10 @@ CREATE TABLE `aula` (
 --
 
 CREATE TABLE `materia` (
-  `id` bigint(20) NOT NULL,
-  `ativo` bit(1) NOT NULL,
+  `id` integer NOT NULL,
+  `ativo` integer NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `grau` int(11) NOT NULL,
+  `grau` integer NOT NULL,
   `objetivos` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -96,8 +97,8 @@ CREATE TABLE `materia` (
 --
 
 CREATE TABLE `materia_assunto` (
-  `id_materia` bigint(20) NOT NULL,
-  `id_assunto` bigint(20) NOT NULL
+  `id_materia` integer NOT NULL,
+  `id_assunto` integer NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -107,10 +108,10 @@ CREATE TABLE `materia_assunto` (
 --
 
 CREATE TABLE `professor` (
-  `id` bigint(20) NOT NULL,
-  `grau` int(11) NOT NULL,
+  `id` integer NOT NULL,
+  `grau` integer NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
-  `turno` int(11) NOT NULL
+  `turno` integer NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -128,10 +129,10 @@ INSERT INTO `professor` (`id`, `grau`, `nome`, `turno`) VALUES
 --
 
 CREATE TABLE `turma` (
-  `id` bigint(20) NOT NULL,
+  `id` integer NOT NULL,
   `descricao` varchar(255) DEFAULT NULL,
-  `grau` int(11) NOT NULL,
-  `turno` int(11) NOT NULL
+  `grau` integer NOT NULL,
+  `turno` integer NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

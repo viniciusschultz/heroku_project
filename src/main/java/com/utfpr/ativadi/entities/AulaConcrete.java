@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity(name = "Aula")
-@Table(name = "aula")
+@Table(name = "aula", schema = "ativadi")
 public class AulaConcrete extends Aula implements PrototypeAula{
 
     public AulaConcrete() {
