@@ -17,6 +17,6 @@ public interface MateriaRepository extends CrudRepository<Materia, Long> {
     @Query(value = "SELECT * FROM ativadi.materia m WHERE m.id = :id", nativeQuery = true)
     public Optional<Materia> findById(@Param("id") Long id);
 
-    @Query(value = "SELECT MAX(coalesce(id, 0)) + 1 FROM ativadi.materia", nativeQuery = true)
+    @Query(value = "SELECT MAX(COALESCE(id, 0)) + 1 FROM ativadi.materia", nativeQuery = true)
     public long getNewID();
 }

@@ -17,6 +17,6 @@ public interface AssuntoRepository extends CrudRepository<Assunto, Long> {
     @Query(value = "SELECT * FROM ativadi.assunto a WHERE a.id = :id", nativeQuery = true)
     public Optional<Assunto> findById(@Param("id") Long id);
 
-    @Query(value = "SELECT MAX(coalesce(id, 0)) + 1 FROM ativadi.assunto", nativeQuery = true)
+    @Query(value = "SELECT MAX(COALESCE(id, 0)) + 1 FROM ativadi.assunto", nativeQuery = true)
     public long getNewID();
 }
