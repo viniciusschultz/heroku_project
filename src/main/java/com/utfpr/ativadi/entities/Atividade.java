@@ -19,16 +19,16 @@ public class Atividade implements AtividadeFlyweight{
     @NotNull(message = "O Grau Escolar é um campo obrigatório")
     private int grau;
 
-    @Column(name = "urlExterna")
-    private String urlExterna;
+    @Column(name = "url_externa")
+    private String url_externa;
 
     public Atividade(){}
 
-    public Atividade(long id, String descricao, int grau, String urlExterna) {
+    public Atividade(long id, String descricao, int grau, String url_externa) {
         this.id = id;
         this.descricao = descricao;
         this.grau = grau;
-        this.urlExterna = urlExterna;
+        this.url_externa = url_externa;
     }
 
     public long getId() {
@@ -56,12 +56,12 @@ public class Atividade implements AtividadeFlyweight{
         this.grau = grau;
     }
 
-    public String getUrlExterna() {
-        return urlExterna;
+    public String getUrl_externa() {
+        return url_externa;
     }
 
-    public void setUrlExterna(String urlExterna) {
-        this.urlExterna = urlExterna;
+    public void setUrl_externa(String url_externa) {
+        this.url_externa = url_externa;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Atividade implements AtividadeFlyweight{
                 "id=" + id +
                 ", descricao='" + descricao + '\'' +
                 ", grau=" + grau +
-                ", urlExterna='" + urlExterna + '\'' +
+                ", url_externa='" + url_externa + '\'' +
                 '}';
     }
 }

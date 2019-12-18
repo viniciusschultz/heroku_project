@@ -44,6 +44,7 @@ public class MateriaController {
     @PostMapping("/addmateria")
     public String addMateria(@Valid Materia materia, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute(LOAD_ASSUNTOS, assuntoRepository.findAll());
             model.addAttribute(ERROR, Mensagem.getInstance(false, Mensagem.Funcao.ADICIONAR).show());
             return "add_materia";
         }

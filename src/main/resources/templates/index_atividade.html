@@ -46,7 +46,7 @@
                                                     <span th:if="${atividade.grau == 1}">Pré-Escolar</span>
                                                     <span th:unless="${atividade.grau == 1}">Escolar</span>
                                                 </td>
-                                                <td th:text="${atividade.urlExterna}"></td>
+                                                <td th:text="${atividade.url_externa}"></td>
                                                 <td><a th:href="@{/editatividade/{id}(id=${atividade.id})}" class="btn btn-primary"><em class="fas fa-user-edit ml-2"></em></a></td>
                                                 <td><a th:href="@{/deleteatividade/{id}(id=${atividade.id})}" class="btn btn-primary"><em class="fas fa-user-times ml-2"></em></a></td>
                                             </tr>
