@@ -59,6 +59,7 @@ public class AulaController {
     @PostMapping("/addaula")
     public String addAula(@Valid AulaConcrete aula, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            model.addAttribute("aula", aula);
             model.addAttribute(LOAD_PROFESSORES, professorRepository.findAll());
             model.addAttribute(LOAD_MATERIAS, materiaRepository.findAll());
             model.addAttribute(LOAD_TURMAS, turmaRepository.findAll());

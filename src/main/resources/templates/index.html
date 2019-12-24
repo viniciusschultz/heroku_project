@@ -5,30 +5,21 @@
     </head>
 
     <body>
-
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div th:insert="~{base :: header_fragment(~{::h3})}">
-                        <h3>AtivaDI</h3>
-                    </div>
-
-                    <div class="panel panel-default" style="margin: 10px">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">AtivaDI</h1>
-                        </div>
-
-                        <div class="panel-body">
-
-                        </div>
-                    </div>
-
-                    <div th:insert="~{base :: footer_fragment}"/>
-                </div>
-            </div>
+        <div class="preloader" th:insert="~{base :: common_preloader}">
         </div>
 
-        <script th:src="@{/webjars/jquery/jquery.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
+        <section class="header-area">
+            <div class="navbar-area" th:insert="~{base :: common_navbar}">
+            </div>
+
+            <div id="home" class="slider-area" th:insert="~{base :: common_slide}">
+            </div>
+        </section>
+
+        <footer id="footer" class="footer-area" th:insert="~{base :: common_footer}">
+        </footer>
+
+        <div th:insert="~{base :: common_script}">
+        </div>
     </body>
 </html>

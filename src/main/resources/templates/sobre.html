@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head th:replace="base :: common_header(~{::title})">
+    <title>Sobre</title>
+</head>
+
+<body>
+<section class="header-area">
+    <div class="navbar-area" th:insert="~{base :: common_navbar}">
+    </div>
+
+    <div id="home" class="slider-area">
+        <div class="container my-5">
+            <p>Este projeto foi desenvolvido na disciplina de Tópicos Especiais em Engenharia de Software
+                contendo os seguintes padrões de projeto:</p>
+            <ul class="list-group">
+                <li list-group-item>  . Composite: o qual relaciona "Matéria" e "Assunto";</li>
+                <li list-group-item>  . Flyweight: para compartilhar "Atividade", a qual é diferenciada pela descrição no momento da inclusão;</li>
+                <li list-group-item>  . Prototype: ao copiar uma "Aula" existente;</li>
+                <li list-group-item>  . Singleton: em toda emissão de mensagem no sistema foi centralizado em uma única instância da classe emissora.</li>
+            </ul>
+
+            </br>
+
+            <p>Foram utilizadas as seguintes ferramentas:</p>
+            <ul class="list-group">
+                <li list-group-item>  . Spring Boot;</li>
+                <li list-group-item>  . Thymeleaf;</li>
+                <li list-group-item>  . JPA;</li>
+                <li list-group-item>  . Postegres;</li>
+                <li list-group-item>  . IntelliJ IDEA Community</li>
+                <li list-group-item>  . Bootstrap</li>
+                <li list-group-item>  . JQuery</li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+<footer id="footer" class="footer-area" th:insert="~{base :: common_footer}">
+</footer>
+
+<div th:insert="~{base :: common_script}">
+</div>
+</body>
+</html>

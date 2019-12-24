@@ -1,70 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
-    <head>
-        <head th:replace="base :: common_header(~{::title})">
-            <title>Aula</title>
-        </head>
-    </head>
+<head th:replace="base :: common_header(~{::title})">
+    <title>Aula</title>
+</head>
 
-    <body class="text-center">
+<body>
+<section class="header-area">
+    <div class="navbar-area" th:insert="~{base :: common_navbar}">
+    </div>
 
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div th:insert="~{base :: header_fragment(~{::h3})}">
-                        <h3>Aula</h3>
+    <div id="home" class="slider-area">
+        <div th:switch="${aulas}" class="container my-5">
+            <div th:if="${sucessMessage}" th:text="${sucessMessage}" style="color:green"/>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="/newaula" class="btn btn-primary btn-novo d-flex flex-row-reverse"><em class="fas fa-user-plus ml-2"></em></a>
+                    <p></p>
+
+                    <h2 th:if="${#lists.isEmpty(aulas)}">Sem registros!</h2>
+                    <div th:unless="${#lists.isEmpty(aulas)}">
+                        <h2 class="d-flex flex-row">Aulas</h2>
+                        <table class="table table-striped" style="width:100%;">
+                            <caption>Aulas cadastradas</caption>
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Data de Realização</th>
+                                <th scope="col">Professor</th>
+                                <th scope="col">Matéria</th>
+                                <th scope="col">Turma</th>
+                                <th scope="col">Atividade</th>
+                                <th scope="col">Alterar</th>
+                                <th scope="col">Remover</th>
+                                <th scope="col">Copiar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="aula : ${aulas}">
+                                <td th:text="${aula.id}"></td>
+                                <td th:text="${#dates.format(aula.data, 'dd/MM/yyyy')}"></td>
+                                <td th:text="${aula.professor.nome}"></td>
+                                <td th:text="${aula.materia.descricao}" style="width:80%;"></td>
+                                <td th:text="${aula.turma.descricao}"></td>
+                                <td th:text="${aula.atividade.descricao}"></td>
+                                <td><a th:href="@{/editaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-user-edit ml-2"></em></a></td>
+                                <td><a th:href="@{/deleteaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-user-times ml-2"></em></a></td>
+                                <td><a th:href="@{/cloneaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-clone ml-2"></em></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                        <div th:if="${sucessMessage}" th:text="${sucessMessage}" style="color:green"/>
-
-                        <div th:switch="${aulas}" class="container my-5">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h2 th:case="null">Sem registros!</h2>
-                                    <div th:case="*">
-                                        <h2 class="d-flex flex-row">Aulas</h2>
-                                        <a href="/newaula" class="btn btn-primary d-flex flex-row-reverse"><em class="fas fa-user-plus ml-2"></em></a>
-                                        <p></p>
-                                        <table class="table table-striped" style="width:100%;">
-                                            <caption>Aulas cadastradas</caption>
-                                            <thead class="thead-light">
-                                            <tr>
-                                                <th scope="col">Código</th>
-                                                <th scope="col">Data de Realização</th>
-                                                <th scope="col">Professor</th>
-                                                <th scope="col">Matéria</th>
-                                                <th scope="col">Turma</th>
-                                                <th scope="col">Atividade</th>
-                                                <th scope="col">Alterar</th>
-                                                <th scope="col">Remover</th>
-                                                <th scope="col">Copiar</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr th:each="aula : ${aulas}">
-                                                <td th:text="${aula.id}"></td>
-                                                <td th:text="${#dates.format(aula.data, 'dd/MM/yyyy')}"></td>
-                                                <td th:text="${aula.professor.nome}"></td>
-                                                <td th:text="${aula.materia.descricao}" style="width:80%;"></td>
-                                                <td th:text="${aula.turma.descricao}"></td>
-                                                <td th:text="${aula.atividade.descricao}"></td>
-                                                <td><a th:href="@{/editaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-user-edit ml-2"></em></a></td>
-                                                <td><a th:href="@{/deleteaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-user-times ml-2"></em></a></td>
-                                                <td><a th:href="@{/cloneaula/{id}(id=${aula.id})}" class="btn btn-primary"><em class="fas fa-clone ml-2"></em></a></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div th:insert="~{base :: footer_fragment}"/>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script th:src="@{/webjars/jquery/jquery.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
-    </body>
+</section>
+
+<footer id="footer" class="footer-area" th:insert="~{base :: common_footer}">
+</footer>
+
+<div th:insert="~{base :: common_script}">
+</div>
+</body>
 </html>

@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Atualizar Assunto</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
-    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+<head th:replace="base :: common_header(~{::title})">
+    <title>Alterar Assunto</title>
 </head>
-<body>
-<div class="container my-5">
-    <h2 class="mb-5">Alterar Assunto</h2>
 
-    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red"/>
+    <body>
+        <section class="header-area">
+            <div class="navbar-area" th:insert="~{base :: common_navbar}">
+            </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <form action="#" th:action="@{/updateassunto/{id}(id=${assunto.id})}" th:object="${assunto}" method="post">
-                <div class="form-group">
-                    <label for="descricao" class="col-form-label">Nome</label>
-                    <input type="text" th:field="*{descricao}" class="form-control" id="descricao" placeholder="Descrição">
-                    <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger"></span>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mt-5">
-                        <input type="submit" class="btn btn-primary" value="Atualizar Assunto">
+            <div id="home" class="slider-area">
+                <div class="container my-5">
+                    <h2 class="mb-5">Alterar Assunto</h2>
+                    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red"/>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="#" th:action="@{/updateassunto/{id}(id=${assunto.id})}" th:object="${assunto}" method="post">
+                                <div class="form-group">
+                                    <label for="descricao" class="col-form-label">Nome</label>
+                                    <input autofocus type="text" th:field="*{descricao}" class="form-control" id="descricao" placeholder="Descrição">
+                                    <span th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}" class="text-danger"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mt-5">
+                                        <input type="submit" class="btn btn-primary" value="Confirmar">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div>
 
-<script th:src="@{/webjars/jquery/jquery.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.js}"></script>
-</body>
+        </section>
+
+        <footer id="footer" class="footer-area" th:insert="~{base :: common_footer}">
+        </footer>
+
+        <div th:insert="~{base :: common_script}">
+        </div>
+    </body>
 </html>
