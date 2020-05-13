@@ -26,9 +26,9 @@
                             <caption>Matérias cadastradas</caption>
                             <thead class="thead-light">
                             <tr>
-                                <th scope="col">Código</th>
+                                <!-- <th scope="col">Código</th> -->
+                                <th scope="col">Matéria</th>
                                 <th scope="col">Assunto</th>
-                                <th scope="col">Descrição</th>
                                 <th scope="col">Grau</th>
                                 <th scope="col">Objetivos</th>
                                 <th scope="col">Situação</th>
@@ -38,13 +38,13 @@
                             </thead>
                             <tbody>
                             <tr th:each="materia : ${materias}">
-                                <td th:text="${materia.id}"></td>
+                                <!-- <td th:text="${materia.id}"></td> -->
+                                <td th:text="${materia.descricao}" style="width:80%;"></td>
                                 <td style="width:80%;">
                                     <div th:each="assunto : ${materia.assuntos}">
                                         <p th:text="${assunto.descricao}"/>
                                     </div>
                                 </td>
-                                <td th:text="${materia.descricao}" style="width:80%;"></td>
                                 <td>
                                     <span th:if="${materia.grau == 1}">Pré-Escolar</span>
                                     <span th:unless="${materia.grau == 1}">Escolar</span>
